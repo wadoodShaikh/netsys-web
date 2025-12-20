@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Netsys ICT and Network Consultants </title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .top-bar a:hover {
+            color: #00a8e8;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a8e8;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00a8e8;
+        }
+
+        /* Dropdown Menu */
+        nav li {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #00a8e8;
+        }
+
+        nav li:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Page Header */
+        .page-header {
+                  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./img/bg-img2.jpg) center center;
+            background-size: cover; color: #fff; color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* About Content */
+        .about-intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .about-intro h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-intro p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        .mv-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .mv-card h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mv-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .mv-card p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .values-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+            color: #fff;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 0 0 0 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -47px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-year {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #00a8e8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0088cc;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #00a8e8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #00a8e8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .top-bar .container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .stats-grid,
+            .mission-vision,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item::before {
+                left: -37px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding: 5px 0 5px 20px;
+            }
+
+            nav li:hover .dropdown-content {
+                display: none;
+            }
+        } .whatsapp{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+      }
+      .whatsapp:hover{
+        transform: translateY(-10px);
+      }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div>
+          <a href="tel:+35699448888">(+356) 99448888</a>
+          <a href="mailto:info@netsys.com.mt">info@netsys.com.mt</a>
+        </div>
+        <div>
+         <a href="https://wa.me/35699448888?text=Hi%2C%20I%E2%80%99d%20like%20to%20learn%20more%20about%20your%20IT%20support%20services" class="btn-small">CONTACT US ON WHATSAPP</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a
+          href="index.html"
+          class="logo"
+          style="display: flex; align-items: center; justify-content: center"
+          ><img src="img/logo.png" alt="logo" width="220"
+        /></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+          <ul id="mainMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li>
+              <a href="services.html">Services</a>
+              <div class="dropdown-content">
+                <a href="infrastructure-services.html"
+                  >Infrastructure Services</a
+                >
+                <a href="software-services.html">Software Services</a>
+              </div>
+            </li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+ <div class="whatsapp">
+      <a href="https://wa.me/35699448888?text=Hi%2C%20I%E2%80%99d%20like%20to%20learn%20more%20about%20your%20IT%20support%20services"> <img src="whatsapp.svg" alt="whatsapp" width="60px"></a>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>About Us</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / About Us
+        </div>
+    </section>
+
+    <!-- About Introduction -->
+    <section class="about-intro">
+        <h2>Who We Are</h2>
+        <p>Netsys is driven by a passion to provide the very best in customer service and IT support. At Netsys we all share the same goal; to provide businesses with a first class service for IT. Whether we look after your IT Support, help you to implement complex IT Installations or simply train your team, We always strive to work in partnership with you to build on your existing success. We will listen to your needs, go above and beyond to help you deliver your IT strategy for the future and will become an integral part of your team.</p>
+        <p>We believe that finding the right IT partner is key to making your business run smoothly and efficiently, while maximising the return on your IT investment. With our exceptional qualified service teams, a wealth of industry knowledge and the ability to adapt to any sector we are confident in saying that Netsys is the right choice for your business.</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Projects Delivered</p>
+            </div>
+            <div class="stat-item">
+                <h3>200+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="mv-card">
+            <h2><div class="mv-icon">🎯</div> Our Mission</h2>
+            <p>To empower businesses through innovative IT solutions that simplify technology, enhance security, and drive sustainable growth. We strive to be the trusted partner that organizations rely on to navigate the complexities of the digital landscape.</p>
+        </div>
+        <div class="mv-card">
+            <h2><div class="mv-icon">👁️</div> Our Vision</h2>
+            <p>To be recognized as Malta's leading provider of comprehensive IT solutions, setting the standard for excellence, innovation, and customer satisfaction. We envision a future where technology seamlessly enables business success.</p>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="values-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Integrity</h3>
+                <p>We operate with transparency and honesty in everything we do, building trust with our clients through ethical business practices.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💡</div>
+                <h3>Innovation</h3>
+                <p>We continuously evolve and embrace new technologies to provide cutting-edge solutions that keep our clients ahead of the curve.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎓</div>
+                <h3>Excellence</h3>
+                <p>We are committed to delivering the highest quality solutions and services, exceeding expectations at every touchpoint.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌟</div>
+                <h3>Customer Focus</h3>
+                <p>Our clients are at the heart of everything we do. We listen, understand, and deliver solutions that truly meet their needs.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">👥</div>
+                <h3>Collaboration</h3>
+                <p>We believe in the power of teamwork, working closely with clients and partners to achieve shared success.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🔒</div>
+                <h3>Security</h3>
+                <p>We prioritize the security and privacy of our clients' data, implementing robust measures to protect their digital assets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Partner With Us?</h2>
+        <p>Let's discuss how we can help transform your business with innovative IT solutions</p>
+        <a href="contact.html" class="btn">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>Netsys ICT and Network Consultants</h4>
+          <p>
+            Netsys is driven by a passion to provide the very best in customer
+            service and IT support. At Netsys we all share the same goal; to
+            provide businesses with a first class service for IT.
+          </p>
+          <div class="social-links">
+            <a href="#">f</a>
+            <a href="#">in</a>
+            <a href="#">▶</a>
+            <a href="#">📷</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Professional</a></li>
+            <li><a href="software-services.html">Software</a></li>
+            <li><a href="#">ERP</a></li>
+            <li><a href="#">Managed</a></li>
+            <li><a href="#">Hospitality</a></li>
+            <li><a href="#">Cloud</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <ul>
+            <li>Netsys ICT and Network Consultants</li>
+            <li>99, Triq Mamo, Ħaż-Żebbuġ,</li>
+            <li>ZBG 2400, Malta EU</li>
+            <li><a href="mailto:info@netsys.com.mt">info@netsys.com.mt</a></li>
+            <li><a href="tel:+35699448888">(+356) 99448888</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © Copyright 2023. All Rights Reserved NETSYS ICT and Network
+          Consultants
+        </p>
+      </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mainMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

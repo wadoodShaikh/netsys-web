@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <title>Network Services | Netsys ICT and Network Consultants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .top-bar a:hover {
+            color: #00a8e8;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a8e8;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00a8e8;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #00a8e8;
+        }
+
+        nav li:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./img/bg-img2.jpg) center center;
+            background-size: cover; color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .intro-section {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 0 20px;
+        }
+
+        .intro-section p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-section h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 30px 0 20px;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .service-link {
+            color: #00a8e8;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .service-link:hover {
+            transform: translateX(5px);
+        }
+
+        .testimonial-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .testimonial-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .testimonial-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-company {
+            color: #00a8e8;
+            font-size: 14px;
+        }
+
+        .cta {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #00a8e8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0088cc;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #00a8e8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #00a8e8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .services-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar .container {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div>
+          <a href="tel:+35699448888">(+356) 99448888</a>
+          <a href="mailto:info@netsys.com.mt">info@netsys.com.mt</a>
+        </div>
+        <div>
+          <a href="#contact" class="btn-small">BOOK A CALL</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a
+          href="index.html"
+          class="logo"
+          style="display: flex; align-items: center; justify-content: center"
+          ><img src="img/logo.png" alt="logo" width="220"
+        /></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+          <ul id="mainMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li>
+              <a href="services.html">Services</a>
+              <div class="dropdown-content">
+                <a href="infrastructure-services.html"
+                  >Infrastructure Services</a
+                >
+                <a href="software-services.html">Software Services</a>
+              </div>
+            </li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <section class="page-header">
+        <h1>Networks</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="services.html">Services</a> / Networks
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <p>At Netsys ICT and Network Consultants, we provide a full suite of Network Services to support reliable, high-performance connectivity across your business.</p>
+        
+        <p>From robust cabling infrastructure to advanced WiFi and remote access solutions, our services are designed to keep your organisation connected, flexible, and secure. With our expertise, you can seamlessly integrate both local and wide-area networks, enabling smooth communication and data flow across all your locations.</p>
+
+        
+    </section>
+
+
+    <section class="cta">
+        <h2>Ready to take your business to the next level?</h2>
+        <p>Contact us today to learn how we can help you achieve seamless communication, robust security, and uninterrupted operations. Let us be your trusted partner in navigating the complexities of the digital world.</p>
+        <a href="contact.html" class="btn">Book a Call</a>
+    </section>
+
+  <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h4>Netsys ICT and Network Consultants</h4>
+          <p>
+            Netsys is driven by a passion to provide the very best in customer
+            service and IT support. At Netsys we all share the same goal; to
+            provide businesses with a first class service for IT.
+          </p>
+          <div class="social-links">
+            <a href="#">f</a>
+            <a href="#">in</a>
+            <a href="#">▶</a>
+            <a href="#">📷</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Professional</a></li>
+            <li><a href="software-services.html">Software</a></li>
+            <li><a href="#">ERP</a></li>
+            <li><a href="#">Managed</a></li>
+            <li><a href="#">Hospitality</a></li>
+            <li><a href="#">Cloud</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <ul>
+            <li>Netsys ICT and Network Consultants</li>
+            <li>99, Triq Mamo, Ħaż-Żebbuġ,</li>
+            <li>ZBG 2400, Malta EU</li>
+            <li><a href="mailto:info@netsys.com.mt">info@netsys.com.mt</a></li>
+            <li><a href="tel:+35699448888">(+356) 99448888</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © Copyright 2023. All Rights Reserved NETSYS ICT and Network
+          Consultants
+        </p>
+      </div>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mainMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

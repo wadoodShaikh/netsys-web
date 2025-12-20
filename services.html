@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Netsys ICT and Network Consultants</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .top-bar a:hover {
+            color: #00a8e8;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a8e8;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00a8e8;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #00a8e8;
+        }
+
+        nav li:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .page-header {
+             background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./img/bg-img2.jpg) center center;
+            background-size: cover;color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .services-intro {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .services-intro h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .services-intro p {
+            font-size: 18px;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .service-link {
+            color: #00a8e8;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .service-link:hover {
+            transform: translateX(5px);
+        }
+
+        .cta {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #00a8e8;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0088cc;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: #00a8e8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #00a8e8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #00a8e8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar .container {
+                justify-content: center;
+                text-align: center;
+            }
+        } .whatsapp{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+      }
+      .whatsapp:hover{
+        transform: translateY(-10px);
+      }
+    </style>
+</head>
+<body>
+     <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div>
+          <a href="tel:+35699448888">(+356) 99448888</a>
+          <a href="mailto:info@netsys.com.mt">info@netsys.com.mt</a>
+        </div>
+        <div>
+         <a href="https://wa.me/35699448888?text=Hi%2C%20I%E2%80%99d%20like%20to%20learn%20more%20about%20your%20IT%20support%20services" class="btn-small">CONTACT US ON WHATSAPP</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a
+          href="index.html"
+          class="logo"
+          style="display: flex; align-items: center; justify-content: center"
+          ><img src="img/logo.png" alt="logo" width="220"
+        /></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+          <ul id="mainMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li>
+              <a href="services.html">Services</a>
+              <div class="dropdown-content">
+                <a href="infrastructure-services.html"
+                  >Infrastructure Services</a
+                >
+                <a href="software-services.html">Software Services</a>
+              </div>
+            </li>
+            <li><a href="partners.html">Partners</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+ <div class="whatsapp">
+      <a href="https://wa.me/35699448888?text=Hi%2C%20I%E2%80%99d%20like%20to%20learn%20more%20about%20your%20IT%20support%20services"> <img src="whatsapp.svg" alt="whatsapp" width="60px"></a>
+    </div>
+
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / Services
+        </div>
+    </section>
+
+    <section class="services-intro">
+        <h2>Comprehensive IT Solutions for Your Business</h2>
+        <p>From professional services to managed solutions, we provide a full spectrum of IT services designed to drive efficiency, security, and growth. Explore our offerings below to find the perfect fit for your business needs.</p>
+    </section>
+
+    <section class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">🔧</div>
+            <h3>Infrastructure Services</h3>
+            <p>We design, build, and maintain robust IT infrastructure that keeps your business running smoothly. From servers and storage to system optimization, NetSys ensures your foundation is secure, scalable, and future-ready.</p>
+            <a href="infrastructure-services.html" class="service-link">Explore Infrastructure Services →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🛡️</div>
+            <h3>Software Services</h3>
+            <p>Our software solutions are built to simplify operations and improve productivity. Whether it’s system integration, application support, or performance optimization, we help your software work smarter for your business.</p>
+            <a href="software-services.html" class="service-link">Software Services →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Cloud Services</h3>
+            <p>Move faster and scale with confidence using our cloud solutions. We help you migrate, manage, and optimize cloud environments that are secure, cost-effective, and tailored to your operational needs.</p>
+            <a href="cloud-services.html" class="service-link">Cloud Services →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Managed IT Services</h3>
+            <p>Comprehensive IT managed services including managed DBA, BI, Microsoft 365, network management, backup solutions, and more to keep your IT running smoothly.</p>
+            <a href="managed-it-services.html" class="service-link">View Managed Services →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏨</div>
+            <h3>Bespoke Development</h3>
+            <p>Every business is different—your technology should be too. We create custom-built solutions designed around your specific workflows, challenges, and goals, ensuring maximum efficiency and long-term value.</p>
+            <a href="bespoke-development.html" class="service-link">Explore Options →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">☁️</div>
+            <h3>Networks</h3>
+            <p>Reliable connectivity is the backbone of modern business. We design, deploy, and manage high-performance network solutions that deliver speed, stability, and security across your organization.</p>
+            <a href="networks.html" class="service-link">Networks →</a>
+        </div>
+
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Transform Your IT Infrastructure?</h2>
+        <p>Contact us today to discuss how our services can help your business succeed</p>
+        <a href="contact.html" class="btn">Schedule a Consultation</a>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Smart Technologies Limited</h4>
+                <p>Smart Technologies has been in business since 2008, establishing partnerships and serving loyal clients, from huge companies to startups.</p>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">in</a>
+                    <a href="#">▶</a>
+                    <a href="#">📷</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#">Professional</a></li>
+                    <li><a href="#">Software</a></li>
+                    <li><a href="#">ERP</a></li>
+                    <li><a href="#">Managed</a></li>
+                    <li><a href="#">Hospitality</a></li>
+                    <li><a href="#">Cloud</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>Smart Technologies Ltd.</li>
+                    <li>Navi Buildings Level 1</li>
+                    <li>Pantar Road, Lija, LJA2021</li>
+                    <li><a href="mailto:info@stl.com.mt">info@stl.com.mt</a></li>
+                    <li><a href="tel:+35622584300">(+356) 22 584 300</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Copyright 2023. All Rights Reserved Smart Technologies Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mainMenu');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
